@@ -1,0 +1,177 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+input {
+  display: none;
+}
+body {
+  background-color: #e2b68c;
+  z-index: -1000;
+}
+
+section {
+  width: 450px;
+  height: 600px;
+  margin: 5%;
+  border-radius: 20px;
+  background-color: white;
+  position: relative;
+  padding: 30px;
+  font-family: 'Lobster Two', cursive;
+}
+
+.ret-heart {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 10;
+}
+
+.ret-heart .flash{
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    z-index: 1;
+}
+
+.recette .plat-titre {
+  display: flex;
+  align-items: center;
+  width: 300px;
+  margin: 20px 0;
+}
+
+.recette .plat-titre .titre {
+    transform: translateX(110px);
+}
+
+.recette .plat-titre .titre::after {
+    content: "";
+    width: 300px; height: 400px;
+    background-color: white;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    z-index: 2;
+    opacity: 0;
+}
+
+.recette .plat-titre label {
+  height: 100px;
+  width: 100px;
+  top: 70px;
+  z-index: 1000;
+  position: absolute;
+}
+
+.recette .plat-titre label img {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+}
+
+.recette .ingr {
+  display: flex;
+  height: 350px;
+  margin-top: 70px;
+}
+
+.recette .ingr .num,
+.recette .ingr .sal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.recette .ingr .num {
+  text-align: end;
+  padding-right: 10px;
+  font-weight: 600;
+}
+
+/* ----------ANIME---------- */
+
+.coeur:checked ~ label div {
+    opacity: 1;
+}
+
+#bouton:checked ~ label {
+  animation: 0.3s mouv forwards linear;
+}
+
+@keyframes mouv {
+  0% {
+  }
+  100% {
+  transform: translate(40px, 150px);
+    height: 300px;
+    width: 300px;
+  }
+}
+
+#bouton:checked ~ .titre::after {
+    opacity: 1;
+}
+
+
+#bouton:not(:checked) ~ label {
+  animation: 0.3s remouv forwards linear;
+}
+
+@keyframes remouv {
+  0% {
+    transform: translate(40px, 150px);
+    height: 300px;
+    width: 300px;
+  }
+  100% {
+  }
+}
+
+#bouton:not(:checked) ~ .titre::after {
+    animation: 2s appar forwards linear;
+}
+
+@keyframes appar {
+    0%{
+        height: 420px
+        
+    }
+    100%{
+        height: 1px
+
+    }
+}
+
+#bouton:checked ~ .titre {
+    animation: 0.3s wha forwards linear;
+  }
+  
+  @keyframes wha {
+    0% {
+    }
+    100% {
+    transform: translateX(0);
+    }
+  }
+
+  #bouton:not(:checked) ~ .titre {
+    animation: 0.3s rewha forwards linear;
+  }
+  
+  @keyframes rewha {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+    }
+  }
+
+  .sal {
+    font-family: none;
+  }
